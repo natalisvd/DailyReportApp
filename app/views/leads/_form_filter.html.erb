@@ -1,0 +1,28 @@
+<%=form_tag '/leads/daily', :method => :get do %>
+
+    <%= label_tag(:from, "From:") %>
+    <%= text_field_tag :from, params[:from], :value=>"2011, 06, 02" %>
+    <%= label_tag(:to, "to:") %>
+    <%= text_field_tag :to, params[:to], :value=>"2015, 06, 02"%>
+    <br/>
+    <input type="hidden" id="business_entity_name" name="business_entity_name" value=""/>
+    <%= select_tag(:business_entity, options_for_select(@business_entity ,:selected=>params[:business_entity_name]))%>
+    <br/>
+    <input type="hidden" id="lead_source_list" name="lead_source_list" value=""/>
+    <% grouped_options = {'leaderssl' => ["www.leaderssl.com", "newsite.instantssl.su", "www.leaderssl.nl", "www.leaderssl.com.ua", "www.leaderssl.sg", "www.leaderssl.de", "www.leaderssl.be", "www.leaderssl.fr", "www.leaderssl.co.uk", "ca.leaderssl.com", "www.leaderssl.us", "www.leaderssl.cz", "www.leaderssl.gr", "www.leaderssl.ie", "www.leaderssl.ch", "www.leaderssl.si", "www.leaderssl.es"], 'getucc' => ['www.getucc.com', 'www.getucc.com']}%>
+    <%= select_tag(:lead_source, options_for_select(grouped_options_for_select(grouped_options,:selected=>params[:lead_source])))%>
+    <br/>
+    <%= radio_button_tag(:status, "all", :checked=> (params[:status] == 'all' ? true : false )) %>
+    <%= label_tag(:status_all, "All") %>
+    <br/>
+    <%= radio_button_tag(:status, "not_spam", :checked=> (params[:status] == 'not_spam' ? true : false )) %>
+    <%= label_tag(:status_not_spam, "Not spam") %>
+    <br/>
+    <%= radio_button_tag(:status, "closed", :checked=> (params[:status] == 'closed' ? true : false )) %>
+    <%= label_tag(:status_closed, "Closed") %>
+    <br/>
+    <%= check_box_tag(:convert, params[:convert], :checked=>(params[:convert] ? true : false)) %>
+    <%= label_tag(:convert, "Convert to contract") %>
+    <br/>
+    <%= submit_tag("Ok", :class=>'btn btn-primary') %>
+<%end%>

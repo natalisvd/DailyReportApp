@@ -1,0 +1,27 @@
+<div class="container">Filters
+  <br/>
+  <%=render 'form_filter'%>
+  <div class="resalts">
+  <%if @leads%>
+
+
+        <table class="table table-bordered">
+     <tr>
+       <th>Date</th>
+       <th>Leads Count</th>
+     </tr>
+        <%@leads_date.each do |date|%>
+         <tr>
+           <th><%= date.strftime("%d/%m/%Y")%></th>
+           <th><%=@leads_fil.where(:created_at =>date).count%></th>
+         </tr>
+        <%end%>
+   </table>
+      <div id='chart'></div>
+      <%= render_chart @chart, 'chart' %>
+        <br/>
+
+        <%= link_to "Upload CSV", daily_path({format: "csv"}.merge(params)), :class=>'btn btn-primary' %>
+  <%end%>
+</div>
+</div>

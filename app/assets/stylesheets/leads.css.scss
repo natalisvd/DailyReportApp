@@ -1,0 +1,44 @@
+// Place all the styles related to the leads controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+html, body{
+  width:100%;
+  height: 100%;
+}
+.container{
+  width:60%;
+  height: 100%;
+}
+.resalts{
+  display: inline-block;
+  height: 350px;
+  overflow: auto;
+  width: 70%;
+  margin-top:30px;
+}
+table{
+  display: inline-block;
+  width: auto !important;
+}
+
+#chart {
+  display: inline-block;
+  left: 60%;
+  position: absolute;
+  top: 10px;
+}
+
+.ui-multiselect-checkboxes.ui-helper-reset {
+    background-color: white;
+}
+
+.ui-datepicker-calendar {
+    background-color: white;
+}
+
+.ui-datepicker-month {
+    color: grey;
+}
+.container input, .ui-multiselect {
+  margin: 5px;
+}
